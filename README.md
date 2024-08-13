@@ -4,7 +4,7 @@
 
 Clone the repo and install the packages
 
-### `yarn install`
+### `npm install`
 
 ## Configuration
 
