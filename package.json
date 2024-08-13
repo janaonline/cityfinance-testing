@@ -1,0 +1,15 @@
+{
+  "name": "cityfinance-testing",
+  "version": "1.0.0",
+  "description": "Cypress test cases for city finance app",
+  "main": "index.ts",
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.13.1",
+    "typescript": "^5.5.4"
+  }
+}
