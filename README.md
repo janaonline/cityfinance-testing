@@ -17,12 +17,12 @@ Integration testing for Cityfinance using Cypress
 
 ### Interactive
 
-- `yarn run cypress open`
+- `npm run cypress open`
 
 Launches cypress test runner.
 
 ### Batch
 
-- `yarn cy:run`
+- `npm run cy:run`
 
 Command line without opening a browser (headless mode)
