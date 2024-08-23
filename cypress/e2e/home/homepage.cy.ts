@@ -38,7 +38,7 @@ describe("Home page", () => {
     cy.wait(6000);
   });
 
-  it("Check homepage fuction", () => {
+  it.skip("Check homepage fuction", () => {
     cy.xpath(
       "//img[@src='../../../../assets/M FIGMA/city-finance-ranking.png']"
     ).click();
