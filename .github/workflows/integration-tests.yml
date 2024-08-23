@@ -1,0 +1,21 @@
+name: Integration Testing
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Cypress run
+        run: |
+          echo Create cypress.config.ts from example
+          cp cypress.config.ts.example cypress.config.ts
+          yarn install
+          yarn run cypress run --record --key ${{ secrets.CYPRESS_DASHBOARD_KEY }}
