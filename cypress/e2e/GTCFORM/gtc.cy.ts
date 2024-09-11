@@ -83,6 +83,7 @@ describe("GTC form", () => {
     })
 
 
+
     it('Invalid Email valid password',()=>{
       cy.visit("https://staging.cityfinance.in/login");
       cy.get("#ulb i").click();
@@ -91,6 +92,8 @@ describe("GTC form", () => {
       cy.get("button[type='submit']").click();
       cy.get('.error-message span').should('be.visible').and('have.text', 'User not found');
     });
+
+
 
 
     it('Invalid Password valid email',()=>{
@@ -104,6 +107,7 @@ describe("GTC form", () => {
     });
 
 
+
     it('Both Invalid Username and Password',()=>{
       cy.visit("https://staging.cityfinance.in/login");
       cy.get("#ulb i").click();
@@ -115,6 +119,7 @@ describe("GTC form", () => {
     })
 
 
+    
     it('eye icon',()=>{
       cy.visit("https://staging.cityfinance.in/login");
       cy.get("#ulb i").click();
@@ -122,7 +127,6 @@ describe("GTC form", () => {
        cy.get("mat-icon[role='img']").click();
       cy.get('input[formcontrolname="password"]').should('have.attr', 'type', 'text');
     });
-
     it('Navigate to GFC form',()=>{
       cy.visit("https://staging.cityfinance.in/login");
       cy.get("#ulb i").click();
@@ -292,6 +296,8 @@ describe("GTC form", () => {
         cy.get('.swal-title').should('be.visible').and('have.text','Saved');
         cy.get('.swal-text').should('be.visible').and('have.text','Data saved as draft successfully');
         cy.xpath("//button[normalize-space()='OK']").click();
+       cy //button[normalize-space()='Submit']
+      
         
       });
     })

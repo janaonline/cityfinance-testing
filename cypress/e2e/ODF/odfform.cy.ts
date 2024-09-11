@@ -177,7 +177,8 @@ it("error message displayed when PDF upload field is left blank",()=>{
   cy.get("mat-select[id='1']").click();
   cy.get('mat-option').contains('span', 'No Rating').click();
   cy.xpath("//button[normalize-space()='Submit']").click();
-  cy.get('.custom-file div').should('have.text', ' This is a required field ').should('have.css', 'color', 'rgb(255, 0, 0)');
+  cy.get('.custom-file div').should('have.text', ' This is a required field ')
+.should('have.css', 'color', 'rgb(255, 0, 0)');
   
   
 })
