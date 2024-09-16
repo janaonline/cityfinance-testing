@@ -3,17 +3,18 @@ import { defineConfig } from "cypress";
 export default defineConfig({
     viewportWidth: 1366,
     viewportHeight: 1024,
+    projectId: "xhjbst",
 
     env: {
         id: "12345678",
         password: "pass@123",
     },
     defaultCommandTimeout: 8000,
-    video: false,
+    video: true,
     e2e: {
         setupNodeEvents(on, config) {
             // implement node event listeners here
         },
-        baseUrl: "http://localhost:4200/",
+        baseUrl: "https://staging.cityfinance.in",
     },
 });

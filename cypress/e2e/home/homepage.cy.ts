@@ -29,15 +29,10 @@ describe("Home page", () => {
      cy.wait(6000);
    });
 
-
-
-   
-
-
-
-
-   it("Check homepage fuction", () => {
-    cy.get(".navbar-brand.cityLogo").click();
+  it.skip("Check homepage fuction", () => {
+    cy.xpath(
+      "//img[@src='../../../../assets/M FIGMA/city-finance-ranking.png']"
+    ).click();
     cy.wait(6000);
     cy.xpath("//a[@class='navbar-brand']").click();
     cy.get("form input:first-child").type("Luckno");

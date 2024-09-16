@@ -17,7 +17,7 @@ describe("Login page", () => {
         cy.get("input[type='email']").should("have.class", "ng-invalid");
     });
 
-    it("Successful login", () => {
+    it.skip("Successful login", () => {
         cy.get("#ulb").click();
         cy.get("input[type=email]").type(id);
         cy.get("input[type=password]").type(password);

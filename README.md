@@ -1,5 +1,7 @@
 # Cityfinance 
 
+[![City finance](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/xhjbst&style=flat&logo=cypress)](https://cloud.cypress.io/projects/xhjbst/runs)
+
 ## Setup
 
 Clone the repo and install the packages
