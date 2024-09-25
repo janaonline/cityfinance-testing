@@ -5,10 +5,24 @@ export default defineConfig({
     viewportHeight: 1024,
     projectId: "xhjbst",
 
-    env: {
-        id: "12345678",
-        password: "pass@123",
-    },
+   env: {
+   
+        id: process.env.id,
+        password:process.env.password,
+        odfid:process.env.odfid,
+        odfpassword:process.env.odfpassword,
+        //gfc
+        id1:process.env.id1,
+        password1:process.env.password1,
+        gfcstate_id:process.env.gfcstate_id,
+        gfcstate_password:process.env.gfcstate_password,
+        code:process.env.code,
+        password2:process.env.password2,
+     
+        odfstate_id:process.env.odfstate_id,
+        odfstate_password:process.env.odfstate_password,
+    
+      },
     defaultCommandTimeout: 8000,
     video: true,
     e2e: {
