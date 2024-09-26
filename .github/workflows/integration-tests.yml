@@ -15,9 +15,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cypress run
+      - name: Cypress install
         run: |
           echo Create cypress.config.ts from example
           cp cypress.config.ts.example cypress.config.ts
           yarn install
+      - name: Cypress run
+        run: |
           yarn run cypress run --record --key ${{ secrets.CYPRESS_DASHBOARD_KEY }}
+        env:
+          id: ${{ secrets.ID }}
+          password: ${{ secrets.PASSWORD }}
+          odfid: ${{ secrets.ODFID }}
+          odfpassword: ${{ secrets.ODFPASSWORD }}
+          id1: ${{ secrets.ID1 }}
+          password1: ${{ secrets.PASSWORD1 }}
+          gfcstate_id: ${{ secrets.GFCSTATE_ID }}
+          gfcstate_password: ${{ secrets.GFCSTATE_PASSWORD }}
+          code: ${{ secrets.CODE }}
+          password2: ${{ secrets.PASSWORD2 }}
+          odfstate_id: ${{ secrets.ODFSTATE_ID }}
+          odfstate_password: ${{ secrets.ODFSTATE_PASSWORD }}
+
+
+      
