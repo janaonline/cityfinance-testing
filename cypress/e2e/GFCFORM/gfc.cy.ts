@@ -1,6 +1,6 @@
 import "cypress-file-upload";
 require('cypress-xpath');
- require('dotenv');
+
 describe("GFC form", () => {
    
     it("Verify URL and title of the web page", () => {
