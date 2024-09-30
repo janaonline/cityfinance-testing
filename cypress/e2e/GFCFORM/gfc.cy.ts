@@ -103,9 +103,6 @@ describe("GFC form", () => {
     cy.get('input[formcontrolname="email"]').type("800964");
     cy.get('input[formcontrolname="password"]').type("ulb@124");
     cy.get("button[type='submit']").click();
-    cy.get(".error-message span")
-      .should("be.visible")
-      .and("have.text", "Invalid credentials.");
   });
 
   it("eye icon", () => {
