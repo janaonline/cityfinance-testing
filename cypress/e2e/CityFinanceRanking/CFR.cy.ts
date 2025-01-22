@@ -173,7 +173,7 @@ it("Verify Navigation to The resource mobilzation section", () => {
   cy.contains('h2', 'Ranking Parameters').should("be.visible")
   cy.get('img[src="./assets/fiscal-rankings/RM.svg"]').scrollIntoView()
   cy.wait(5000)
-  cy.contains('button', 'Learn more').eq(0).click();
+  cy.contains('button', 'Learn more').eq(0).click()
   cy.wait(3000);
   cy.contains('h3', 'Resource Mobilization').should("be.visible")
   cy.contains('p', '6').should("be.visible")
