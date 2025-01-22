@@ -3,7 +3,7 @@ import { defineConfig } from "cypress";
 export default defineConfig({
     viewportWidth: 1366,
     viewportHeight: 1024,
-    projectId: "xhjbst",
+    projectId: "grpazs",
 
    env: {
    
