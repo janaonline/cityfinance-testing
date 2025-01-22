@@ -168,7 +168,7 @@ it("Verify Ranking parameter section", () => {
 
 it("Verify Navigation to The resource mobilzation section", () => {
   cy.visit("https://staging.cityfinance.in/home");
-  cy.get("img[src*='city-finance-ranking.png']").should("be.visible");
+  cy.get("img[src*='city-finance-ranking.png']").should("be.visible")
   cy.get("img[src*='city-finance-ranking.png']").click(); 
   cy.contains('h2', 'Ranking Parameters').should("be.visible")
   cy.get('img[src="./assets/fiscal-rankings/RM.svg"]').scrollIntoView()
