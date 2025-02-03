@@ -266,7 +266,7 @@ it("Verify Navigation to The resource mobilzation section", () => {
       cy.get('td').eq(3).should('contain.text', ' 100');
       cy.get('td').eq(4).should('contain.text', ' [Total capital expenditure - capex for water supply and sanitation]/ ULB Population '); 
       cy.get('td').eq(5).should('contain.text', ' (ULB number/ Highest ULB number) * Maximum score ');
-      cy.get('td').eq(6).should('contain.text', ' Higher the  ');
+      cy.get('td').eq(6).should('contain.text', ' Higher the better ');
     });
 
     cy.contains('a', 'City Finance Ranking - Home').should("be.visible")
@@ -307,7 +307,7 @@ it("Verify Navigation to The resource mobilzation section", () => {
   })
 
 
-  it('Ranking of ulbs page heading components',()=>{
+  it('Ranking of ulbs page and search  functionality',()=>{
     cy.visit("https://staging.cityfinance.in/fc/cfr/top-rankings");
     cy.get("input[placeholder='Search ULB...']").should("be.visible").and("have.attr", "placeholder", "Search ULB...");
 cy.get('.mt-4.fw-bold').should("be.visible").should('have.text','Ranking of ULBs');
