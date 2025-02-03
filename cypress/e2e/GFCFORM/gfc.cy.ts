@@ -111,7 +111,7 @@ describe("GFC form", () => {
 
   it("eye icon", () => {
     cy.visit("https://staging.cityfinance.in/fc_grant");
-    cy.get('input[type="submit"]').contains('LOGIN').click();
+    cy.get('input[type="submit"]').contains('LOGIN').click()
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="password"]').should(
       "have.attr",
