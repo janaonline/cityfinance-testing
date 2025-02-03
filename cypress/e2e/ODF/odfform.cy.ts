@@ -336,6 +336,7 @@ describe("test1", () => {
   })
 
 
+
   it('ODF Preview UI',()=>{
     cy.visit("https://staging.cityfinance.in/login");
     cy.get("#state").click();
@@ -363,9 +364,45 @@ describe("test1", () => {
       
   
   })
+
+  it('Verify that the Odf form is successfully returned by state.',()=>{
+    cy.visit("https://staging.cityfinance.in/login");
+    cy.get("#state").click();
+    cy.get('input[formcontrolname="email"]').type(Cypress.env('odfstate_id'));
+    cy.get('input[formcontrolname="password"]').type(Cypress.env('odfstate_password'));
+    cy.get("button[type='submit']").click();
+    cy.contains('a', '15th FC Grants').click();
+    cy.wait(3000);
+    cy.contains('button', '2024-25').click();
+    cy.contains('a', 'Review Grant Application').click(); 
+    cy.get('#form').select('Open Defecation Free (ODF)');
+    cy.get("input[placeholder='Ulb Code']").type(Cypress.env('odfid'));
+    cy.get("input[placeholder='Ulb Code']").next().click();
+    cy.contains('a','Take Action').click();
+    cy.get("#reason").type("The uploaded document is incorrect.");
+    cy.get("input[accept$='.pdf']").next().click();
+    cy.get("input[accept$='.pdf']")
+    .attachFile('ODF.pdf', { force: true });
+    cy.contains('label','Return').click();
+    cy.contains('button','Submit').click();
+    cy.get(".swal-button.swal-button--Submit").click();
+     
+  })
+
     
   
   })
+
+
+
+ 
+
+  
+
+
+
+
+ 
 //   it('Verify the error message displayed when submitting the Review Grant Application State ODF form without a status',()=>{
 //     cy.visit("https://staging.cityfinance.in/login");
 //     cy.get("#state").click();
@@ -410,29 +447,6 @@ describe("test1", () => {
 //     cy.get('.swal-button-container').click();
 //     cy.get('.text-danger').should('contain.text', ' This is the required field. ');
   
-//   })
-//   it('Verify that the Odf form is successfully returned by state.',()=>{
-//     cy.visit("https://staging.cityfinance.in/login");
-//     cy.get("#state").click();
-//     cy.get('input[formcontrolname="email"]').type(Cypress.env('odfstate_id'));
-//     cy.get('input[formcontrolname="password"]').type(Cypress.env('odfstate_password'));
-//     cy.get("button[type='submit']").click();
-//     cy.contains('a', '15th FC Grants').click();
-//     cy.wait(3000);
-//     cy.contains('button', '2024-25').click();
-//     cy.contains('a', 'Review Grant Application').click(); 
-//     cy.get('#form').select('Open Defecation Free (ODF)');
-//     cy.get("input[placeholder='Ulb Code']").type(Cypress.env('code'));
-//     cy.get("input[placeholder='Ulb Code']").next().click();
-//     cy.contains('a','Take Action').click();
-//     cy.get("#reason").type("The uploaded document is incorrect.");
-//     cy.get("input[accept$='.pdf']").next().click();
-//     cy.get("input[accept$='.pdf']")
-//     .attachFile('ODF.pdf', { force: true });
-//     cy.contains('label','Return').click();
-//     cy.contains('button','Submit').click();
-//     cy.get(".swal-button.swal-button--Submit").click();
-     
 //   })
   
 //   it('ODF form Submit',()=>{
