@@ -322,7 +322,7 @@ cy.get('input[role="combobox"][placeholder="Search ULB..."]').should('be.visible
   cy.get('input[placeholder="Search ULB..."]').click();
   cy.wait(5000);
   cy.get('input[role="combobox"][placeholder="Search ULB..."]').should('be.visible').click().type('mysore');
-  cy.wait(5000);
+  cy.wait(5000)
   cy.get('mat-option') .first().click();
   cy.get(".swal2-html-container").should("be.visible").contains("Mysore Municipal Corporation is not ranked.");
   cy.get('.swal2-confirm.swal2-styled').click();
