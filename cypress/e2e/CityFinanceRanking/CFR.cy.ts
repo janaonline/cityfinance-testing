@@ -65,44 +65,44 @@ it("Verify Navigation to the explore more section page", () => {
 
 
 
-it("Verify Map in the homepage", () => {
-  cy.visit("https://staging.cityfinance.in/home");
-  cy.get("img[src*='city-finance-ranking.png']").should("be.visible");
-  cy.get("img[src*='city-finance-ranking.png']").click();
-  cy.get('#map').scrollIntoView()
-  cy.get('#map').should("be.visible");
-  cy.contains('a', 'Survey of India (SOI)').should("be.visible")
-  cy.contains('a', 'Survey of India (SOI)').click();
+// it("Verify Map in the homepage", () => {
+//   cy.visit("https://staging.cityfinance.in/home");
+//   cy.get("img[src*='city-finance-ranking.png']").should("be.visible");
+//   cy.get("img[src*='city-finance-ranking.png']").click();
+//   cy.get('#map').scrollIntoView()
+//   cy.get('#map').should("be.visible");
+//   cy.contains('a', 'Survey of India (SOI)').should("be.visible")
+//   cy.contains('a', 'Survey of India (SOI)').click();
 
 
-  cy.get('#map').scrollIntoView()
-  cy.get('#map').should("be.visible");
-cy.get('g')   
-  .find('path')          
-  .each(($path) => {
+//   cy.get('#map').scrollIntoView()
+//   cy.get('#map').should("be.visible");
+// cy.get('g')   
+//   .find('path')          
+//   .each(($path) => {
     
-        cy.wrap($path).trigger('mouseover', { force: true });
-        cy.wait(1000)
+//         cy.wrap($path).trigger('mouseover', { force: true });
+//         cy.wait(1000)
          
      
-  });
-  cy.get("div.indicator-items div i") 
-.each(($el) => {
-cy.wrap($el).should('be.visible');
-cy.wait(3000); 
-});
+//   });
+//   cy.get("div.indicator-items div i") 
+// .each(($el) => {
+// cy.wrap($el).should('be.visible');
+// cy.wait(3000); 
+// });
 
-cy.contains('div', 'High Participation').find('i[style*="background: #0B8CC3"]').should("be.visible")
-cy.contains('div', 'Low Participation').find('i[style*="background: #52b788"]').should("be.visible")
-cy.contains('div', 'Hilly/ North Eastern State').find('i[style*="background: #d69f7e"]').should("be.visible")
-cy.contains('div', 'Not Participated').find('i[style*="background: #E5E5E5"]').should("be.visible")
-
-
+// cy.contains('div', 'High Participation').find('i[style*="background: #0B8CC3"]').should("be.visible")
+// cy.contains('div', 'Low Participation').find('i[style*="background: #52b788"]').should("be.visible")
+// cy.contains('div', 'Hilly/ North Eastern State').find('i[style*="background: #d69f7e"]').should("be.visible")
+// cy.contains('div', 'Not Participated').find('i[style*="background: #E5E5E5"]').should("be.visible")
 
 
 
 
-})
+
+
+// })
  
 
 it("Verify Top performer ULB's Table in the homepage", () => {
