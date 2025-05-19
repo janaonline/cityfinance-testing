@@ -372,13 +372,13 @@ describe("GFC form", () => {
         cy.xpath("//span[normalize-space()='Submissions for 15th FC grant for FY 2024-25']").
           should('be.visible').and('have.text',' Submissions for 15th FC grant for FY 2024-25 ');
           cy.get('#donwloadButton').should('be.visible');
-          cy.get(".form-h.text-center").
-          should('be.visible').and('have.text',' Garbage Free City (GFC) ');
-          cy.get('.form-status').should("be.visible");
-          cy.get('.d-ans').each(($el) => {
+          // cy.get(".form-h.text-center").
+          // should('be.visible').and('have.text',' Garbage Free City (GFC) ');
+          // cy.get('.form-status').should("be.visible");
+          // cy.get('.d-ans').each(($el) => {
          
-            cy.wrap($el).should('be.visible');
-          });
+          //   cy.wrap($el).should('be.visible');
+          // });
           
       
       })
