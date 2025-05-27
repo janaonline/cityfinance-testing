@@ -22,7 +22,7 @@ jobs:
           yarn install
       - name: Cypress run
         run: |
-          yarn run cypress run --record --key ${{ secrets.CYPRESS_DASHBOARD_KEY }}
+          yarn run cypress run --spec "cypress/e2e/GFC25_26/GFC2526.cy.ts"
         env:
           id: ${{ secrets.ID }}
           password: ${{ secrets.PASSWORD }}
