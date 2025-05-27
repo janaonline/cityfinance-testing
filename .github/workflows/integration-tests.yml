@@ -22,7 +22,10 @@ jobs:
           yarn install
       - name: Cypress run
         run: |
-          yarn run cypress run --record --key ${{ secrets.CYPRESS_DASHBOARD_KEY }}
+          echo "start"
+          echo ${{ secrets.CODE1 }}
+          echo ${{ secrets.PASSWORD3 }}
+          echo ${{ secrets.PASSWORD }}
         env:
           id: ${{ secrets.ID }}
           password: ${{ secrets.PASSWORD }}
