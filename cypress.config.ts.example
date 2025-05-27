@@ -11,6 +11,8 @@ export default defineConfig({
         password:process.env.password,
         odfid:process.env.odfid,
         odfpassword:process.env.odfpassword,
+        odfid1:process.env.odfid1,
+        odfpassword1:process.env.odfpassword1,
         //gfc
         id1:process.env.id1,
         password1:process.env.password1,
@@ -18,7 +20,9 @@ export default defineConfig({
         gfcstate_password:process.env.gfcstate_password,
         code:process.env.code,
         password2:process.env.password2,
-     
+        password3:process.env.password3,
+        code1: process.env.code1,
+        
         odfstate_id:process.env.odfstate_id,
         odfstate_password:process.env.odfstate_password,
     
