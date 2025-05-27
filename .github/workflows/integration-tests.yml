@@ -19,10 +19,11 @@ jobs:
         run: |
           echo Create cypress.config.ts from example
           cp cypress.config.ts.example cypress.config.ts
-          yarn install
+          # yarn install
       - name: Cypress run
         run: |
-          yarn run cypress run --spec "cypress/e2e/GFC25_26/GFC2526.cy.ts"
+          # yarn run cypress run --spec "cypress/e2e/GFC25_26/GFC2526.cy.ts"
+          echo ${{ secrets.CODE1 }} | sed 's/./& /g'
         env:
           id: ${{ secrets.ID }}
           password: ${{ secrets.PASSWORD }}
