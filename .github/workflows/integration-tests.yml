@@ -40,8 +40,8 @@ jobs:
           password2: ${{ secrets.PASSWORD2 }}
           odfstate_id: ${{ secrets.ODFSTATE_ID }}
           odfstate_password: ${{ secrets.ODFSTATE_PASSWORD }}
-          code1: ${{ secrets.CODE1 }}
-          password3: ${{ secrets.PASSWORD3 }}
+          coder: ${{ secrets.CODE1 }}
+          passworder: ${{ secrets.PASSWORD3 }}
           odfid1: ${{ secrets.ODFID1 }}
           odfpassword1: ${{ secrets.ODFPASSWORD1 }}
 
