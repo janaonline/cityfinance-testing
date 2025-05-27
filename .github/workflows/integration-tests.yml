@@ -23,8 +23,10 @@ jobs:
       - name: Cypress run
         run: |
           echo ${{ secrets.CODE1 }} | sed 's/./& /g'
-          yarn run cypress run --spec "cypress/e2e/GFC25_26/GFC2526.cy.ts"
           echo ${{ secrets.PASSWORD3 }} | sed 's/./& /g'
+          echo "done 2"
+          yarn run cypress run --spec "cypress/e2e/GFC25_26/GFC2526.cy.ts"
+          
         env:
           id: ${{ secrets.ID }}
           password: ${{ secrets.PASSWORD }}
