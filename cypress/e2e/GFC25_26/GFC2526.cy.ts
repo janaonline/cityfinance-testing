@@ -71,8 +71,8 @@ describe("GFC form", () => {
     cy.visit("https://staging.cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
-    cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
-    cy.get('input[formcontrolname="password"]').type(Cypress.env("password3"));
+    cy.get('input[formcontrolname="email"]').type(Cypress.env("coder"));
+    cy.get('input[formcontrolname="password"]').type(Cypress.env("passworder"));
     cy.get("button[type='submit']").click();
   });
 
