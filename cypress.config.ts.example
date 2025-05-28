@@ -21,6 +21,10 @@ export default defineConfig({
      
         odfstate_id:process.env.odfstate_id,
         odfstate_password:process.env.odfstate_password,
+        code1:process.env.code1,
+        password3:process.env.password3,
+        odfid1:process.env.odfid1,
+        odfpassword1:process.env.odfpassword1,
     
       },
     defaultCommandTimeout: 8000,
