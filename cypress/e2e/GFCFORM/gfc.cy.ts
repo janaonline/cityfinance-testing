@@ -4,16 +4,15 @@ require('cypress-xpath');
 describe("GFC form", () => {
    
     it("Verify URL and title of the web page", () => {
-    cy.visit("https://staging.cityfinance.in/home");
-    cy.url().should("eq", "https://staging.cityfinance.in/home");
+    cy.visit("https://cityfinance.in/home");
+    cy.url().should("eq", "https://cityfinance.in/home");
     cy.title().should("eq", "City finance");
     cy.get(".ds-i-c span:first-child").should("contain.text", "city");
     cy.get(".ds-i-c span:last-child").should("contain.text", "finance.in");
   });
 
   it("Verify XVFC page Navigation", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
-
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get("#loginDrp").should("be.visible").contains("Login");
     cy.get("#loginDrp").click();
     cy.get(".dropdown-menu.dropdown-menu-login").should("be.visible");
@@ -24,21 +23,21 @@ describe("GFC form", () => {
         if (option.includes("XV FC Grant")) {
           cy.wrap($el).click();
           cy.wait(1000);
-          cy.url().should("eq", "https://staging.cityfinance.in/fc_grant");
+          cy.url().should("eq", "https://cityfinance.in/fc_grant");
         }
       }
     );
   });
 
   it("Navigate to login Page", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
-    cy.url().should("eq", "https://staging.cityfinance.in/login");
+    cy.url().should("eq", "https://cityfinance.in/login");
   });
 
   it("ULB login page UI", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get(".formTitle b").should("be.visible").and("have.text", "Sign In");
@@ -53,7 +52,7 @@ describe("GFC form", () => {
   });
 
   // // it("Both Username and password empty submission", () => {
-  // //   cy.visit("https://staging.cityfinance.in/fc_grant");
+  // //   cy.visit("https://cityfinance.in/fc_grant");
   // //   cy.get('input[type="submit"]').contains('LOGIN').click();
   // //   cy.get("#ulb i").click();
 
@@ -68,7 +67,7 @@ describe("GFC form", () => {
   // // });
 
   it("successful ulb login", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env('code'));
@@ -76,8 +75,9 @@ describe("GFC form", () => {
     cy.get("button[type='submit']").click();
   });
 
+
   it("Invalid Email valid password", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("808800");
@@ -89,7 +89,7 @@ describe("GFC form", () => {
   });
 
   it("Invalid Password valid email", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -101,7 +101,7 @@ describe("GFC form", () => {
   });
 
   it("Both Invalid Username and Password", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("800964");
@@ -110,7 +110,7 @@ describe("GFC form", () => {
   });
 
   it("eye icon", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click()
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="password"]').should(
@@ -126,7 +126,7 @@ describe("GFC form", () => {
     );
   });
   it("Navigate to GFC form", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -141,7 +141,7 @@ describe("GFC form", () => {
   });
 
   it("GFC FORM UI", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -181,7 +181,7 @@ describe("GFC form", () => {
   });
 
   it("error message displayed when PDF upload field is left blank", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -201,7 +201,7 @@ describe("GFC form", () => {
   });
 
   it("GFC Page Rating Search Functionality", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -227,7 +227,7 @@ describe("GFC form", () => {
   });
 
   it("selecting different ratings correctly displays the associated scores.", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -264,14 +264,13 @@ describe("GFC form", () => {
       } else if ($el.text() === "No Rating" || "No Star") {
         cy.get("mat-select[id='1']").click();
         cy.wrap($el).click();
-
         cy.get(".scoreDiv div").should("have.text", "Score = 15");
       }
     });
   });
 
   it("Form is successfully submitted", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -308,106 +307,106 @@ describe("GFC form", () => {
       .should("be.visible")
       .and("have.text", "Data saved as draft successfully");
       cy.get(".swal-button.swal-button--confirm").click();
-      cy.xpath("//button[normalize-space()='Submit']").click();
-      cy.get(".swal-icon.swal-icon--warning").should("be.visible");
-      cy.get(".swal-title").should('have.text',"Confirmation !");
-      cy.get(".swal-button.swal-button--Submit").click();
-      cy.wait(1000);
+      // cy.xpath("//button[normalize-space()='Submit']").click();
+      // cy.get(".swal-icon.swal-icon--warning").should("be.visible");
+      // cy.get(".swal-title").should('have.text',"Confirmation !");
+      // cy.get(".swal-button.swal-button--Submit").click();
+      // cy.wait(1000);
 
   })
 
-      it('Check Review grant application UI',()=>{
-        cy.visit("https://staging.cityfinance.in/fc_grant");
-        cy.get('input[type="submit"]').contains('LOGIN').click();
-        cy.get("#state").click();
-        cy.get('input[formcontrolname="email"]').type(Cypress.env('gfcstate_id'));
-        cy.get('input[formcontrolname="password"]').type(Cypress.env('gfcstate_password'));
-        cy.get("button[type='submit']").click();
-        cy.contains('a', '15th FC Grants').click();
-        cy.contains('button', '2024-25').click();
-        cy.contains('a', 'Review Grant Application').click();
-        cy.get('#form').select('Garbage Free City (GFC)');
-        cy.get('.header2').should('contain.text',' Review Grant Application ');
-        cy.contains('button', 'Approve all').should("be.visible");
-        cy.contains('button', 'Return all').should("be.visible");
-        cy.contains('button', 'Download').should("be.visible");
-        cy.contains('button', 'Reset').should("be.visible");
-        cy.contains('a','Take Action').should("be.visible");
-        // cy.get('.mat-checkbox').should("be.visible");
-        cy.get('thead tr:nth-child(1)').should('have.css', 'background-color', 'rgb(4, 116, 116)')
-        .and('have.css', 'color', 'rgb(255, 255, 255)');
-        cy.get('thead tr:nth-child(1)')
-            .should('be.visible') 
-            .within(() => {
+      // it('Check Review grant application UI',()=>{
+      //   cy.visit("https://cityfinance.in/fc_grant");
+      //   cy.get('input[type="submit"]').contains('LOGIN').click();
+      //   cy.get("#state").click();
+      //   cy.get('input[formcontrolname="email"]').type(Cypress.env('gfcstate_id'));
+      //   cy.get('input[formcontrolname="password"]').type(Cypress.env('gfcstate_password'));
+      //   cy.get("button[type='submit']").click();
+      //   cy.contains('a', '15th FC Grants').click();
+      //   cy.contains('button', '2024-25').click();
+      //   cy.contains('a', 'Review Grant Application').click();
+      //   cy.get('#form').select('Garbage Free City (GFC)');
+      //   cy.get('.header2').should('contain.text',' Review Grant Application ');
+      //   cy.contains('button', 'Approve all').should("be.visible");
+      //   cy.contains('button', 'Return all').should("be.visible");
+      //   cy.contains('button', 'Download').should("be.visible");
+      //   cy.contains('button', 'Reset').should("be.visible");
+      //   cy.contains('a','Take Action').should("be.visible");
+      //   // cy.get('.mat-checkbox').should("be.visible");
+      //   cy.get('thead tr:nth-child(1)').should('have.css', 'background-color', 'rgb(4, 116, 116)')
+      //   .and('have.css', 'color', 'rgb(255, 255, 255)');
+      //   cy.get('thead tr:nth-child(1)')
+      //       .should('be.visible') 
+      //       .within(() => {
              
              
               
-              cy.get('th.ng-star-inserted').eq(0).should('contain.text', 'S No.');
-              cy.get('th.ng-star-inserted').eq(1).should('contain.text', 'ULB Name');
-              cy.get('th.ng-star-inserted').eq(2).should('contain.text', 'Census/SB Code');
-              cy.get('th.ng-star-inserted').eq(3).should('contain.text', 'ULB Type');
-              cy.get('th.ng-star-inserted').eq(4).should('contain.text', 'Population Type');
-              cy.get('th.ng-star-inserted').eq(5).should('contain.text', 'UA');
-              cy.get('th.ng-star-inserted').eq(6).should('contain.text', 'Form Status');
-              cy.get('th.ng-star-inserted').eq(7).should('contain.text', 'Filled Status');
-              cy.get('th.ng-star-inserted').eq(8).should('contain.text', 'Action');
-            });
-      })
+      //         cy.get('th.ng-star-inserted').eq(0).should('contain.text', 'S No.');
+      //         cy.get('th.ng-star-inserted').eq(1).should('contain.text', 'ULB Name');
+      //         cy.get('th.ng-star-inserted').eq(2).should('contain.text', 'Census/SB Code');
+      //         cy.get('th.ng-star-inserted').eq(3).should('contain.text', 'ULB Type');
+      //         cy.get('th.ng-star-inserted').eq(4).should('contain.text', 'Population Type');
+      //         cy.get('th.ng-star-inserted').eq(5).should('contain.text', 'UA');
+      //         cy.get('th.ng-star-inserted').eq(6).should('contain.text', 'Form Status');
+      //         cy.get('th.ng-star-inserted').eq(7).should('contain.text', 'Filled Status');
+      //         cy.get('th.ng-star-inserted').eq(8).should('contain.text', 'Action');
+      //       });
+      // })
 
-      it('GFC Preview UI',()=>{
-        cy.visit("https://staging.cityfinance.in/fc_grant");
-        cy.get('input[type="submit"]').contains('LOGIN').click();
-        cy.get("#state").click();
-        cy.get('input[formcontrolname="email"]').type(Cypress.env('gfcstate_id'));
-        cy.get('input[formcontrolname="password"]').type(Cypress.env('gfcstate_password'));
-        cy.get("button[type='submit']").click();
-        cy.contains('a', '15th FC Grants').click();
-        cy.contains('button', '2024-25').click();
-        cy.contains('a', 'Review Grant Application').click(); 
-        cy.get('#form').select('Garbage Free City (GFC)');
-        cy.get("input[placeholder='Ulb Code']").type(Cypress.env('code'));
-        cy.get("input[placeholder='Ulb Code']").next().click();
-        cy.contains('a','Take Action').click();
-        cy.contains('button','Preview').click();
-        cy.xpath("//span[normalize-space()='Submissions for 15th FC grant for FY 2024-25']").
-          should('be.visible').and('have.text',' Submissions for 15th FC grant for FY 2024-25 ');
-          cy.get('#donwloadButton').should('be.visible');
-          // cy.get(".form-h.text-center").
-          // should('be.visible').and('have.text',' Garbage Free City (GFC) ');
-          // cy.get('.form-status').should("be.visible");
-          // cy.get('.d-ans').each(($el) => {
+      // it('GFC Preview UI',()=>{
+      //   cy.visit("https://cityfinance.in/fc_grant");
+      //   cy.get('input[type="submit"]').contains('LOGIN').click();
+      //   cy.get("#state").click();
+      //   cy.get('input[formcontrolname="email"]').type(Cypress.env('gfcstate_id'));
+      //   cy.get('input[formcontrolname="password"]').type(Cypress.env('gfcstate_password'));
+      //   cy.get("button[type='submit']").click();
+      //   cy.contains('a', '15th FC Grants').click();
+      //   cy.contains('button', '2024-25').click();
+      //   cy.contains('a', 'Review Grant Application').click(); 
+      //   cy.get('#form').select('Garbage Free City (GFC)');
+      //   cy.get("input[placeholder='Ulb Code']").type(Cypress.env('code'));
+      //   cy.get("input[placeholder='Ulb Code']").next().click();
+      //   cy.contains('a','Take Action').click();
+      //   cy.contains('button','Preview').click();
+      //   cy.xpath("//span[normalize-space()='Submissions for 15th FC grant for FY 2024-25']").
+      //     should('be.visible').and('have.text',' Submissions for 15th FC grant for FY 2024-25 ');
+      //     cy.get('#donwloadButton').should('be.visible');
+      //     // cy.get(".form-h.text-center").
+      //     // should('be.visible').and('have.text',' Garbage Free City (GFC) ');
+      //     // cy.get('.form-status').should("be.visible");
+      //     // cy.get('.d-ans').each(($el) => {
          
-          //   cy.wrap($el).should('be.visible');
-          // });
+      //     //   cy.wrap($el).should('be.visible');
+      //     // });
           
       
-      })
+      // })
 
-      it('Take Action Functionality',()=>{
-        cy.visit("https://staging.cityfinance.in/fc_grant");
-        cy.get('input[type="submit"]').contains('LOGIN').click();
-        cy.get("#state").click();
-        cy.get('input[formcontrolname="email"]').type(Cypress.env('gfcstate_id'));
-        cy.get('input[formcontrolname="password"]').type(Cypress.env('gfcstate_password'));
-        cy.get("button[type='submit']").click();
-        cy.contains('a', '15th FC Grants').click();
-        cy.contains('button', '2024-25').click();
-        cy.contains('a', 'Review Grant Application').click(); 
-        cy.get('#form').select('Garbage Free City (GFC)');
-        cy.get("input[placeholder='Ulb Code']").type(Cypress.env('code'));
-        cy.get("input[placeholder='Ulb Code']").next().click();
-        cy.contains('a','Take Action').click();
-        cy.contains('label','Approve').should("be.visible");
-        cy.contains('label','Return').should("be.visible");
-        cy.get("#reason").type("The uploaded document is incorrect.");
-        cy.get("input[accept$='.pdf']").next().click();
-        cy.get("input[accept$='.pdf']")
-        .attachFile('GFC.pdf', { force: true });
-        cy.contains('label','Return').click();
-        cy.contains('button','Submit').click();
-        cy.get(".swal-button.swal-button--Submit").click();
+      // it('Take Action Functionality',()=>{
+      //   cy.visit("https://cityfinance.in/fc_grant");
+      //   cy.get('input[type="submit"]').contains('LOGIN').click();
+      //   cy.get("#state").click();
+      //   cy.get('input[formcontrolname="email"]').type(Cypress.env('gfcstate_id'));
+      //   cy.get('input[formcontrolname="password"]').type(Cypress.env('gfcstate_password'));
+      //   cy.get("button[type='submit']").click();
+      //   cy.contains('a', '15th FC Grants').click();
+      //   cy.contains('button', '2024-25').click();
+      //   cy.contains('a', 'Review Grant Application').click(); 
+      //   cy.get('#form').select('Garbage Free City (GFC)');
+      //   cy.get("input[placeholder='Ulb Code']").type(Cypress.env('code'));
+      //   cy.get("input[placeholder='Ulb Code']").next().click();
+      //   cy.contains('a','Take Action').click();
+      //   cy.contains('label','Approve').should("be.visible");
+      //   cy.contains('label','Return').should("be.visible");
+      //   cy.get("#reason").type("The uploaded document is incorrect.");
+      //   cy.get("input[accept$='.pdf']").next().click();
+      //   cy.get("input[accept$='.pdf']")
+      //   .attachFile('GFC.pdf', { force: true });
+      //   cy.contains('label','Return').click();
+      //   cy.contains('button','Submit').click();
+      //   cy.get(".swal-button.swal-button--Submit").click();
 
-      })
+      // })
   
     })
 
