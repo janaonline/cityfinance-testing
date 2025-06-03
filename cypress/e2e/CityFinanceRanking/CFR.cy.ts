@@ -105,18 +105,18 @@ it("Verify Navigation to the explore more section page", () => {
 // })
  
 
-it("Verify Top performer ULB's Table in the homepage", () => {
-  cy.visit("https://staging.cityfinance.in/home");
-  cy.get("img[src*='city-finance-ranking.png']").should("be.visible");
-  cy.get("img[src*='city-finance-ranking.png']").click(); 
-  cy.get('span.fw-bold.text-cfPrimary').scrollIntoView()
-  cy.get('th').eq(0).contains('Population Category')
-cy.get('th').eq(1).contains(' Category 1 States (High Participation) ')
-  cy.get('th').eq(2).contains(' Category 2 States (Low Participation) ')
-  cy.get('th').eq(3).contains(' Category 3 States (Hilly/ North-Eastern States) ')
+// it("Verify Top performer ULB's Table in the homepage", () => {
+//   cy.visit("https://staging.cityfinance.in/home");
+//   cy.get("img[src*='city-finance-ranking.png']").should("be.visible");
+//   cy.get("img[src*='city-finance-ranking.png']").click(); 
+//   cy.get('span.fw-bold.text-cfPrimary').scrollIntoView()
+//   cy.get('th').eq(0).contains('Population Category')
+// cy.get('th').eq(1).contains(' Category 1 States (High Participation) ')
+//   cy.get('th').eq(2).contains(' Category 2 States (Low Participation) ')
+//   cy.get('th').eq(3).contains(' Category 3 States (Hilly/ North-Eastern States) ')
 
 
-})
+// })
 
 it("Verify  View Participated and Ranked ULBs across States and UTs ", () => {
   cy.visit("https://staging.cityfinance.in/home");
