@@ -40,6 +40,9 @@ jobs:
           password3: ${{ secrets.PASSWORD3 }}
           odfid1: ${{ secrets.ODFID1 }}
           odfpassword1: ${{ secrets.ODFPASSWORD1 }}
+          AnnualAccount_id: ${{ secrets.AnnualAccount_id }}
+          Annual_Account_password : ${{ secrets.Annual_Account_password }}
+          
 
           
 
