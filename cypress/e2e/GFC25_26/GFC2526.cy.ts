@@ -4,15 +4,15 @@ require('cypress-xpath');
 describe("GFC form", () => {
    
     it("Verify URL and title of the web page", () => {
-    cy.visit("https://staging.cityfinance.in/home");
-    cy.url().should("eq", "https://staging.cityfinance.in/home");
+    cy.visit("https://cityfinance.in/home");
+    cy.url().should("eq", "https://cityfinance.in/home");
     cy.title().should("eq", "City finance");
     cy.get(".ds-i-c span:first-child").should("contain.text", "city");
     cy.get(".ds-i-c span:last-child").should("contain.text", "finance.in");
   });
 
   it("Verify XVFC page Navigation", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
 
     cy.get("#loginDrp").should("be.visible").contains("Login");
     cy.get("#loginDrp").click();
@@ -24,21 +24,21 @@ describe("GFC form", () => {
         if (option.includes("XV FC Grant")) {
           cy.wrap($el).click();
           cy.wait(1000);
-          cy.url().should("eq", "https://staging.cityfinance.in/fc_grant");
+          cy.url().should("eq", "https://cityfinance.in/fc_grant");
         }
       }
     );
   });
 
   it("Navigate to login Page", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
-    cy.url().should("eq", "https://staging.cityfinance.in/login");
+    cy.url().should("eq", "https://cityfinance.in/login");
   });
 
   it("ULB login page UI", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get(".formTitle b").should("be.visible").and("have.text", "Sign In");
@@ -53,7 +53,7 @@ describe("GFC form", () => {
   });
 
   // // it("Both Username and password empty submission", () => {
-  // //   cy.visit("https://staging.cityfinance.in/fc_grant");
+  // //   cy.visit("https://cityfinance.in/fc_grant");
   // //   cy.get('input[type="submit"]').contains('LOGIN').click();
   // //   cy.get("#ulb i").click();
 
@@ -68,7 +68,7 @@ describe("GFC form", () => {
   // // });
 
   it("successful ulb login", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env('code1'));
@@ -77,7 +77,7 @@ describe("GFC form", () => {
   });
 
   it("Invalid Email valid password", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("808800");
@@ -89,7 +89,7 @@ describe("GFC form", () => {
   });
 
   it("Invalid Password valid email", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -101,7 +101,7 @@ describe("GFC form", () => {
   });
 
   it("Both Invalid Username and Password", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("800964");
@@ -110,7 +110,7 @@ describe("GFC form", () => {
   });
 
   it("eye icon", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click()
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="password"]').should(
@@ -126,7 +126,7 @@ describe("GFC form", () => {
     );
   });
   it("Navigate to GFC form", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -141,7 +141,7 @@ describe("GFC form", () => {
   });
 
   it("GFC FORM UI", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -181,7 +181,7 @@ describe("GFC form", () => {
   });
 
   it("error message displayed when PDF upload field is left blank", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -201,7 +201,7 @@ describe("GFC form", () => {
   });
 
   it("GFC Page Rating Search Functionality", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -227,7 +227,7 @@ describe("GFC form", () => {
   });
 
   it("selecting different ratings correctly displays the associated scores.", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -273,7 +273,7 @@ describe("GFC form", () => {
   });
 
   it("Form is successfully submitted", () => {
-    cy.visit("https://staging.cityfinance.in/fc_grant");
+    cy.visit("https://cityfinance.in/fc_grant");
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
