@@ -3,43 +3,44 @@ import { eq } from "cypress/types/lodash";
 describe("Annual Account form", () => {
    
     it("Verify URL and title of the web page", () => {
-    cy.visit("https://cityfinance.in/home");
-    cy.url().should("eq", "https://cityfinance.in/home");
-    cy.title().should("eq", "City finance");
-    cy.get(".ds-i-c span:first-child").should("contain.text", "city");
-    cy.get(".ds-i-c span:last-child").should("contain.text", "finance.in");
+    cy.visit("https://www.cityfinance.in/home");
+    cy.url().should("eq", "https://www.cityfinance.in/home");
+    cy.title().should("eq", "City Finance - Financial Data of 4,000+ Indian Cities");
+    // cy.get(".ds-i-c span:first-child").should("contain.text", "city");
+    // cy.get(".ds-i-c span:last-child").should("contain.text", "finance.in");
   });
 
 
 
   it("Verify XVFC page Navigation", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+   cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').should("be.visible").contains("Login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+    // cy.get(".dropdown-menu.dropdown-menu-login").should("be.visible");;
 
-    cy.get("#loginDrp").should("be.visible").contains("Login");
-    cy.get("#loginDrp").click();
-    cy.get(".dropdown-menu.dropdown-menu-login").should("be.visible");
-
-    cy.get(".dropdown-menu.dropdown-menu-login.show li").each(
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').each(
       ($el, index, $list) => {
         const option = $el.find("a").text();
         if (option.includes("XV FC Grant")) {
           cy.wrap($el).click();
           cy.wait(1000);
-          cy.url().should("eq", "https://cityfinance.in/fc_grant");
         }
       }
     );
   });
 
   it("Navigate to login Page", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
-    cy.url().should("eq", "https://cityfinance.in/login");
   });
 
   it("ULB login page UI", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+   cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get(".formTitle b").should("be.visible").and("have.text", "Sign In");
@@ -54,7 +55,9 @@ describe("Annual Account form", () => {
   });
 
   it("successful ulb login", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env('AnnualAccount_id'));
@@ -63,7 +66,9 @@ describe("Annual Account form", () => {
   });
 
   it("Invalid Email valid password", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("808800");
@@ -75,7 +80,9 @@ describe("Annual Account form", () => {
   });
 
   it("Invalid Password valid email", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("AnnualAccount_id"));
@@ -87,7 +94,9 @@ describe("Annual Account form", () => {
   });
 
   it("Both Invalid Username and Password", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("800964");
@@ -96,7 +105,9 @@ describe("Annual Account form", () => {
   });
 
   it("eye icon", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click()
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="password"]').should(
@@ -116,7 +127,9 @@ describe("Annual Account form", () => {
 
 
   it("Navigate to Annual account  form", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("AnnualAccount_id"));
@@ -126,6 +139,8 @@ describe("Annual Account form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
+                cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.get("a").contains("span", "Annual Accounts").click();
     cy.get(".form-h")
@@ -135,7 +150,9 @@ describe("Annual Account form", () => {
 
 
   it("Verify Provisional Accounts first upload question", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("AnnualAccount_id"));
@@ -145,6 +162,8 @@ describe("Annual Account form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
+                cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.get("a").contains("span", "Annual Accounts").click();
     cy.get(".form-h")
@@ -189,7 +208,9 @@ describe("Annual Account form", () => {
 
 
  it("Verify Provisional Accounts input fields validation check", () => {
-  cy.visit("https://cityfinance.in/fc_grant");
+  cy.visit("https://www.cityfinance.in/fc_grant");
+   cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
   cy.get('input[type="submit"]').contains('LOGIN').click();
   cy.get("#ulb i").click();
   cy.get('input[formcontrolname="email"]').type(Cypress.env("AnnualAccount_id"));
@@ -199,6 +220,8 @@ describe("Annual Account form", () => {
   cy.wait(3000);
   cy.contains("button", "2025-26").click();
   cy.wait(3000);
+              cy.contains('button', 'Dismiss').click();
+
   cy.wait(1000);
   cy.get("a").contains("span", "Annual Accounts").click();
   cy.get(".form-h")

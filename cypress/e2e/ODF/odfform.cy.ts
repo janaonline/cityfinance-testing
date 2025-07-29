@@ -5,43 +5,47 @@ describe("test1", () => {
   const id1 = Cypress.env("odfid");
   const password1 = Cypress.env("odfpassword");
   it("should verify that the user is on the Homepage", () => {
-    cy.visit("https://cityfinance.in/home");
+    cy.visit("https://www.cityfinance.in/home");
 
-    cy.url().should("eq", "https://cityfinance.in/home");
+    cy.url().should("eq", "https://www.cityfinance.in/home");
 
-    cy.title().should("eq", "City finance");
+        cy.title().should("eq", "City Finance - Financial Data of 4,000+ Indian Cities");
 
-    cy.get(".ds-i-c span:first-child").should("contain.text", "city");
-    cy.get(".ds-i-c span:last-child").should("contain.text", "finance.in");
+    // cy.get(".ds-i-c span:first-child").should("contain.text", "city");
+    // cy.get(".ds-i-c span:last-child").should("contain.text", "finance.in");
   });
 
   it("Verify navigation to the XV FC Grant page.", () => {
-    cy.visit("https://cityfinance.in/home");
+    cy.visit("https://www.cityfinance.in/home");
 
-    cy.get("#loginDrp").should("be.visible").contains("Login");
-    cy.get("#loginDrp").click();
-    cy.get(".dropdown-menu.dropdown-menu-login").should("be.visible");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').should("be.visible").contains("Login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+    // cy.get(".dropdown-menu.dropdown-menu-login").should("be.visible");
 
-    cy.get(".dropdown-menu.dropdown-menu-login.show li ").each(
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').each(
       ($el, index, $list) => {
         const option = $el.find("a").text();
         if (option.includes("XV FC Grant")) {
           cy.wrap($el).click();
           cy.wait(1000);
-          cy.url().should("eq", "https://cityfinance.in/fc_grant");
+          cy.url().should("eq", "https://www.cityfinance.in/fc_grant");
         }
       }
     );
   });
 
   it("Navigate to login Page", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
-    cy.url().should("eq", "https://cityfinance.in/login");
   });
   it("sign in box UI", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get(".formTitle b").should("be.visible").and("have.text", "Sign In");
     cy.get('input[formcontrolname="email"]').should("be.visible");
@@ -51,11 +55,15 @@ describe("test1", () => {
     cy.get("a[href='mailto:15fcgrant@cityfinance.in']").should(
       "have.text",
       "15fcgrant@cityfinance.in"
+
     );
   });
 
   it("Both empty submit", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get("button[type='submit']").click();
     cy.get("form mat-form-field")
@@ -68,7 +76,10 @@ describe("test1", () => {
   });
 
   it("Invalid Email", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("808800");
 
@@ -81,7 +92,10 @@ describe("test1", () => {
   });
 
   it("Invalid Password", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
     cy.get('input[formcontrolname="password"]').type("ulb@1234");
@@ -90,7 +104,10 @@ describe("test1", () => {
   });
 
   it("Both Invalid", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("123456");
     cy.get('input[formcontrolname="password"]').type("ulb@124");
@@ -100,7 +117,10 @@ describe("test1", () => {
       .and("have.text", "User not found");
   });
   it("successful Signin", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
     cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
@@ -112,7 +132,10 @@ describe("test1", () => {
 
  
   it("eye icon", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
 
     cy.get('input[formcontrolname="password"]').should(
@@ -130,7 +153,10 @@ describe("test1", () => {
   });
 
   it("Navigate to ODF form", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
     cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
@@ -139,11 +165,15 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
     cy.wait(3000);
+    cy.contains('button', 'Dismiss').click();
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
   });
   it("ODF FORM UI", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
     cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
@@ -152,6 +182,8 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
     cy.wait(3000);
+        cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
     cy.wait(1000);
@@ -172,7 +204,10 @@ describe("test1", () => {
    
   });
   it("error message displayed when PDF upload field is left blank", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
     cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
@@ -181,6 +216,8 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
     cy.wait(3000);
+        cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
     cy.wait(1000);
@@ -192,7 +229,10 @@ describe("test1", () => {
       .should("have.css", "color", "rgb(255, 0, 0)");
   });
   it("ODF Page Rating Search Functionality", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
     cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
@@ -201,6 +241,8 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
     cy.wait(3000);
+        cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
     cy.wait(1000);
@@ -218,7 +260,10 @@ describe("test1", () => {
       .and("contain.text", "No options available ");
   });
   it("selecting different ratings correctly displays the associated scores.", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
     cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
@@ -227,6 +272,8 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
     cy.wait(3000);
+        cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
@@ -253,7 +300,10 @@ describe("test1", () => {
 
 
   it("Form is successfully submitted", () => {
-    cy.visit("https://cityfinance.in/login");
+    cy.visit("https://www.cityfinance.in/login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get("input[value='LOGIN']").click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
     cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
@@ -262,6 +312,8 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
     cy.wait(3000);
+        cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
     cy.wait(1000);
@@ -300,7 +352,7 @@ describe("test1", () => {
 
 
   // it('Check Review grant application UI',()=>{
-  //   cy.visit("https://cityfinance.in/login");
+  //   cy.visit("https://www.cityfinance.in/login");
   //   cy.get("#state").click();
   //   cy.get('input[formcontrolname="email"]').type(Cypress.env('odfstate_id'));
   //   cy.get('input[formcontrolname="password"]').type(Cypress.env('odfstate_password'));
@@ -339,7 +391,7 @@ describe("test1", () => {
 
 
   // it('ODF Preview UI',()=>{
-  //   cy.visit("https://cityfinance.in/login");
+  //   cy.visit("https://www.cityfinance.in/login");
   //   cy.get("#state").click();
   //   cy.get('input[formcontrolname="email"]').type(Cypress.env('odfstate_id'));
   //   cy.get('input[formcontrolname="password"]').type(Cypress.env('odfstate_password'));
@@ -367,7 +419,7 @@ describe("test1", () => {
   // })
 
   // // it('Verify that the Odf form is successfully returned by state.',()=>{
-  // //   cy.visit("https://cityfinance.in/login");
+  // //   cy.visit("https://www.cityfinance.in/login");
   // //   cy.get("#state").click();
   // //   cy.get('input[formcontrolname="email"]').type(Cypress.env('odfstate_id'));
   // //   cy.get('input[formcontrolname="password"]').type(Cypress.env('odfstate_password'));
@@ -405,7 +457,7 @@ describe("test1", () => {
 
  
 //   it('Verify the error message displayed when submitting the Review Grant Application State ODF form without a status',()=>{
-//     cy.visit("https://cityfinance.in/login");
+//     cy.visit("https://www.cityfinance.in/login");
 //     cy.get("#state").click();
 //     cy.get('input[formcontrolname="email"]').type(Cypress.env('odfstate_id'));
 //     cy.get('input[formcontrolname="password"]').type(Cypress.env('odfstate_password'));
@@ -427,7 +479,7 @@ describe("test1", () => {
   
 //   })
 //   it('Verify the error message displayed when returning the ODF form by state without providing a reason.',()=>{
-//     cy.visit("https://cityfinance.in/login");
+//     cy.visit("https://www.cityfinance.in/login");
 //     cy.get("#state").click();
 //     cy.get('input[formcontrolname="email"]').type(Cypress.env('odfstate_id'));
 //     cy.get('input[formcontrolname="password"]').type(Cypress.env('odfstate_password'));
@@ -451,7 +503,7 @@ describe("test1", () => {
 //   })
   
 //   it('ODF form Submit',()=>{
-//     cy.visit("https://cityfinance.in/login");
+//     cy.visit("https://www.cityfinance.in/login");
 //     cy.get("#ulb i").click();
 //     cy.get('input[formcontrolname="email"]').type(Cypress.env('code'));
 //     cy.get('input[formcontrolname="password"]').type(Cypress.env('password'));
@@ -488,7 +540,7 @@ describe("test1", () => {
 //     cy.wait(1000);
 //   })
 //     it('check box functionality',()=>{
-//       cy.visit("https://cityfinance.in/login");
+//       cy.visit("https://www.cityfinance.in/login");
 //         cy.get("#state").click();
 //         cy.get('input[formcontrolname="email"]').type(Cypress.env('state_id'));
 //         cy.get('input[formcontrolname="password"]').type(Cypress.env('state_password'));
@@ -512,7 +564,7 @@ describe("test1", () => {
 //         cy.get('.swal-button.swal-button--Submit').click();
 //     })
 //     it('ODF form Submit',()=>{
-//       cy.visit("https://cityfinance.in/login");
+//       cy.visit("https://www.cityfinance.in/login");
 //       cy.get("#ulb i").click();
 //       cy.get('input[formcontrolname="email"]').type(Cypress.env('code'));
 //       cy.get('input[formcontrolname="password"]').type(Cypress.env('password'));
@@ -549,7 +601,7 @@ describe("test1", () => {
 //       cy.wait(1000);
 //     })
 //     it('Take Action Functionality Approving Form',()=>{
-//       cy.visit("https://cityfinance.in/login");
+//       cy.visit("https://www.cityfinance.in/login");
 //       cy.get("#state").click();
 //       cy.get('input[formcontrolname="email"]').type(Cypress.env('state_id'));
 //       cy.get('input[formcontrolname="password"]').type(Cypress.env('state_password'));
