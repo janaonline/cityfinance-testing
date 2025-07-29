@@ -4,8 +4,10 @@ describe("Login page", () => {
 
 
     it("Check validations", () => {
-        cy.visit("https://cityfinance.in/fc_grant");
-        cy.get('input[type="submit"]').contains('LOGIN').click();
+        cy.visit("https://www.cityfinance.in/fc_grant");
+        cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get('input[type="submit"]').contains('LOGIN').click();
         cy.get("#ulb").click();
         cy.get(".formTitle").should("contain", "Sign In");
         cy.get(".login-btn").eq(0).click();
@@ -13,8 +15,10 @@ describe("Login page", () => {
     });
 
     it("Successful login", () => {
-        cy.visit("https://cityfinance.in/fc_grant");
-        cy.get('input[type="submit"]').contains('LOGIN').click();
+        cy.visit("https://www.cityfinance.in/fc_grant");
+        cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+    cy.get('input[type="submit"]').contains('LOGIN').click();
         cy.get("#ulb").click();
         cy.get("input[type=email]").type('100002');
         cy.get("input[type=password]").type('TS@100002');

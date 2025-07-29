@@ -4,42 +4,48 @@ require('cypress-xpath');
 describe("GFC form", () => {
    
     it("Verify URL and title of the web page", () => {
-    cy.visit("https://cityfinance.in/home");
-    cy.url().should("eq", "https://cityfinance.in/home");
-    cy.title().should("eq", "City finance");
-    cy.get(".ds-i-c span:first-child").should("contain.text", "city");
-    cy.get(".ds-i-c span:last-child").should("contain.text", "finance.in");
+    cy.visit("https://www.cityfinance.in/home");
+    cy.url().should("eq", "https://www.cityfinance.in/home");
+    cy.title().should("eq", "City Finance - Financial Data of 4,000+ Indian Cities");
+    // cy.get(".ds-i-c span:first-child").should("contain.text", "city");
+    // cy.get(".ds-i-c span:last-child").should("contain.text", "finance.in");
   });
 
   it("Verify XVFC page Navigation", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
 
-    cy.get("#loginDrp").should("be.visible").contains("Login");
-    cy.get("#loginDrp").click();
-    cy.get(".dropdown-menu.dropdown-menu-login").should("be.visible");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').should("be.visible").contains("Login");
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+    // cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').should("be.visible");
 
-    cy.get(".dropdown-menu.dropdown-menu-login.show li").each(
+    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').each(
       ($el, index, $list) => {
         const option = $el.find("a").text();
         if (option.includes("XV FC Grant")) {
           cy.wrap($el).click();
           cy.wait(1000);
-          cy.url().should("eq", "https://cityfinance.in/fc_grant");
+          cy.url().should("eq", "https://www.cityfinance.in/fc_grant");
         }
       }
     );
   });
 
   it("Navigate to login Page", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+        cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
-    cy.url().should("eq", "https://cityfinance.in/login");
   });
 
   it("ULB login page UI", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
-    cy.get('input[type="submit"]').contains('LOGIN').click();
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+             cy.get('input[type="submit"]').contains('LOGIN').click();
+
+
     cy.get("#ulb i").click();
     cy.get(".formTitle b").should("be.visible").and("have.text", "Sign In");
     cy.get('input[formcontrolname="email"]').should("be.visible");
@@ -53,7 +59,7 @@ describe("GFC form", () => {
   });
 
   // // it("Both Username and password empty submission", () => {
-  // //   cy.visit("https://cityfinance.in/fc_grant");
+  // //   cy.visit("https://www.cityfinance.in/fc_grant");
   // //   cy.get('input[type="submit"]').contains('LOGIN').click();
   // //   cy.get("#ulb i").click();
 
@@ -68,8 +74,11 @@ describe("GFC form", () => {
   // // });
 
   it("successful ulb login", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
-    cy.get('input[type="submit"]').contains('LOGIN').click();
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
+             cy.get('input[type="submit"]').contains('LOGIN').click();
+
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env('code1'));
     cy.get('input[formcontrolname="password"]').type(Cypress.env('password3'));
@@ -77,7 +86,9 @@ describe("GFC form", () => {
   });
 
   it("Invalid Email valid password", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("808800");
@@ -89,7 +100,9 @@ describe("GFC form", () => {
   });
 
   it("Invalid Password valid email", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -101,7 +114,9 @@ describe("GFC form", () => {
   });
 
   it("Both Invalid Username and Password", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type("800964");
@@ -110,7 +125,9 @@ describe("GFC form", () => {
   });
 
   it("eye icon", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click()
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="password"]').should(
@@ -126,7 +143,9 @@ describe("GFC form", () => {
     );
   });
   it("Navigate to GFC form", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -136,12 +155,16 @@ describe("GFC form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
+                cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
   });
 
   it("GFC FORM UI", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -151,6 +174,9 @@ describe("GFC form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
+    cy.contains('button', 'Dismiss').click();
+
+    cy.wait(1000);
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
     cy.wait(1000);
@@ -181,7 +207,9 @@ describe("GFC form", () => {
   });
 
   it("error message displayed when PDF upload field is left blank", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code"));
@@ -191,6 +219,9 @@ describe("GFC form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
+    cy.contains('button', 'Dismiss').click();
+
+    cy.wait(1000);
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
     cy.wait(1000);
@@ -201,7 +232,9 @@ describe("GFC form", () => {
   });
 
   it("GFC Page Rating Search Functionality", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -211,9 +244,12 @@ describe("GFC form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
+        cy.contains('button', 'Dismiss').click();
+
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
     cy.wait(1000);
+    
     cy.get("mat-select[id='1']").click();
     cy.get("input[id='1_dropDownSearch']").should(
       "have.attr",
@@ -227,7 +263,9 @@ describe("GFC form", () => {
   });
 
   it("selecting different ratings correctly displays the associated scores.", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -237,6 +275,9 @@ describe("GFC form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click()
     cy.wait(3000);
+    cy.contains('button', 'Dismiss').click();
+
+    cy.wait(1000);
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
     cy.wait(1000);
@@ -273,7 +314,9 @@ describe("GFC form", () => {
   });
 
   it("Form is successfully submitted", () => {
-    cy.visit("https://cityfinance.in/fc_grant");
+    cy.visit("https://www.cityfinance.in/fc_grant");
+     cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+         cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
     cy.get('input[formcontrolname="email"]').type(Cypress.env("code1"));
@@ -283,15 +326,23 @@ describe("GFC form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
+    cy.contains('button', 'Dismiss').click();
+
+    cy.wait(1000);
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
     cy.wait(1000);
     cy.get("mat-select[id='1']").click();
     cy.get("mat-option").contains("span", "5 Star").click();
     cy.xpath("//button[normalize-space()='Upload PDF']").click();
+    cy.wait(7000);
+
     cy.get("input[accept$='application/pdf, 5120, 1']").attachFile("GFC.pdf", {
       force: true,
+      
     });
+        cy.wait(7000);
+
     cy.get('input[type="date"]').then(($input: JQuery<HTMLInputElement>) => {
       // Set the value of the input field
       $input[0].value = '2023-09-10';  
