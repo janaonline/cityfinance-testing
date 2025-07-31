@@ -1,6 +1,5 @@
 import 'cypress-file-upload'
 require('cypress-xpath');
-require('dotenv');
 
 
 describe("test1",() => {
