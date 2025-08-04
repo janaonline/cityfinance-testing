@@ -27,6 +27,7 @@ export default defineConfig({
         odfpassword1:process.env.odfpassword1,
         AnnualAccount_id:process.env.AnnualAccount_id,
         Annual_Account_password:process.env.Annual_Account_password,
+        dur_password:process.env.dur_password,
     
       },
     defaultCommandTimeout: 8000,
