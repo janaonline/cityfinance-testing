@@ -42,6 +42,7 @@ jobs:
           odfpassword1: ${{ secrets.ODFPASSWORD1 }}
           AnnualAccount_id: ${{ secrets.AnnualAccount_id }}
           Annual_Account_password : ${{ secrets.Annual_Account_password }}
+          dur_password : ${{ secrets.dur_password }}
           
 
           
