@@ -3,17 +3,42 @@ import { defineConfig } from "cypress";
 export default defineConfig({
     viewportWidth: 1366,
     viewportHeight: 1024,
+    projectId: "grpazs",
 
-    env: {
-        id: "12345678",
-        password: "pass@123",
-    },
+   env: {
+   
+        id: process.env.id,
+        password:process.env.password,
+        odfid:process.env.odfid,
+        odfpassword:process.env.odfpassword,
+        //gfc
+        id1:process.env.id1,
+        password1:process.env.password1,
+        gfcstate_id:process.env.gfcstate_id,
+        gfcstate_password:process.env.gfcstate_password,
+        code:process.env.code,
+        password2:process.env.password2,
+     
+        odfstate_id:process.env.odfstate_id,
+        odfstate_password:process.env.odfstate_password,
+        code1:process.env.code1,
+        password3:process.env.password3,
+        odfid1:process.env.odfid1,
+        odfpassword1:process.env.odfpassword1,
+        AnnualAccount_id:process.env.AnnualAccount_id,
+        Annual_Account_password:process.env.Annual_Account_password,
+        dur_password:process.env.dur_password,
+
+        Ptax_id:process.env.Ptax_id,
+        Ptax_password:process.env.Ptax_password,
+    
+      },
     defaultCommandTimeout: 8000,
-    video: false,
+    video: true,
     e2e: {
         setupNodeEvents(on, config) {
             // implement node event listeners here
         },
-        baseUrl: "http://localhost:4200/",
+        baseUrl: "https://staging.cityfinance.in",
     },
 });
