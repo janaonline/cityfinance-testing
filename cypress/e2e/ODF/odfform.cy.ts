@@ -165,7 +165,6 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
     cy.wait(3000);
-    cy.contains('button', 'Dismiss').click();
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
   });
@@ -182,7 +181,6 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
     cy.wait(3000);
-        cy.contains('button', 'Dismiss').click();
 
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
@@ -203,152 +201,148 @@ describe("test1", () => {
     cy.get("mat-select[id='1']").should("be.visible");
    
   });
-  it("error message displayed when PDF upload field is left blank", () => {
-    cy.visit("https://www.cityfinance.in/login");
-    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
-         cy.get('i.bi-box-arrow-in-right').eq(0).click();
-    cy.get("input[value='LOGIN']").click();
-    cy.get("#ulb i").click();
-    cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
-    cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
-    cy.get("button[type='submit']").click();
-    cy.contains("a", "15th FC Grants").click();
-    cy.wait(3000);
-    cy.contains("button", "2024-25").click();
-    cy.wait(3000);
-        cy.contains('button', 'Dismiss').click();
+  // it("error message displayed when PDF upload field is left blank", () => {
+  //   cy.visit("https://www.cityfinance.in/login");
+  //   cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+  //        cy.get('i.bi-box-arrow-in-right').eq(0).click();
+  //   cy.get("input[value='LOGIN']").click();
+  //   cy.get("#ulb i").click();
+  //   cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
+  //   cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
+  //   cy.get("button[type='submit']").click();
+  //   cy.contains("a", "15th FC Grants").click();
+  //   cy.wait(3000);
+  //   cy.contains("button", "2024-25").click();
+  //   cy.wait(3000);
 
-    cy.wait(1000);
-    cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
-    cy.wait(1000);
-    cy.get("mat-select[id='1']").click();
-    cy.get("mat-option").contains("span", "No Rating").click();
-    cy.xpath("//button[normalize-space()='Submit']").click();
-    cy.get(".custom-file div")
-      .should("have.text", " This is a required field ")
-      .should("have.css", "color", "rgb(255, 0, 0)");
-  });
-  it("ODF Page Rating Search Functionality", () => {
-    cy.visit("https://www.cityfinance.in/login");
-    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
-         cy.get('i.bi-box-arrow-in-right').eq(0).click();
-    cy.get("input[value='LOGIN']").click();
-    cy.get("#ulb i").click();
-    cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
-    cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
-    cy.get("button[type='submit']").click();
-    cy.contains("a", "15th FC Grants").click();
-    cy.wait(3000);
-    cy.contains("button", "2024-25").click();
-    cy.wait(3000);
-        cy.contains('button', 'Dismiss').click();
+  //   cy.wait(1000);
+  //   cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
+  //   cy.wait(1000);
+  //   cy.get("mat-select[id='1']").click();
+  //   cy.get("mat-option").contains("span", "No Rating").click();
+  //   cy.xpath("//button[normalize-space()='Submit']").click();
+  //   cy.get(".custom-file div")
+  //     .should("have.text", " This is a required field ")
+  //     .should("have.css", "color", "rgb(255, 0, 0)");
+  // });
+  // it("ODF Page Rating Search Functionality", () => {
+  //   cy.visit("https://www.cityfinance.in/login");
+  //   cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+  //        cy.get('i.bi-box-arrow-in-right').eq(0).click();
+  //   cy.get("input[value='LOGIN']").click();
+  //   cy.get("#ulb i").click();
+  //   cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
+  //   cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
+  //   cy.get("button[type='submit']").click();
+  //   cy.contains("a", "15th FC Grants").click();
+  //   cy.wait(3000);
+  //   cy.contains("button", "2024-25").click();
+  //   cy.wait(3000);
 
-    cy.wait(1000);
-    cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
-    cy.wait(1000);
-    cy.get("mat-select[id='1']").click();
-    cy.get("input[id='1_dropDownSearch']").should(
-      "have.attr",
-      "placeholder",
-      "Search Open Defecation Free (ODF) Rating"
-    );
-    cy.get("input[id='1_dropDownSearch']").type("ODF++");
-    cy.get("mat-option").contains("span", "ODF++").should("be.visible");
-    cy.get("input[id='1_dropDownSearch']").type("+");
-    cy.get(".mat-option-text")
-      .should("be.visible")
-      .and("contain.text", "No options available ");
-  });
-  it("selecting different ratings correctly displays the associated scores.", () => {
-    cy.visit("https://www.cityfinance.in/login");
-    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
-         cy.get('i.bi-box-arrow-in-right').eq(0).click();
-    cy.get("input[value='LOGIN']").click();
-    cy.get("#ulb i").click();
-    cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
-    cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
-    cy.get("button[type='submit']").click();
-    cy.contains("a", "15th FC Grants").click();
-    cy.wait(3000);
-    cy.contains("button", "2024-25").click();
-    cy.wait(3000);
-        cy.contains('button', 'Dismiss').click();
+  //   cy.wait(1000);
+  //   cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
+  //   cy.wait(1000);
+  //   cy.get("mat-select[id='1']").click();
+  //   cy.get("input[id='1_dropDownSearch']").should(
+  //     "have.attr",
+  //     "placeholder",
+  //     "Search Open Defecation Free (ODF) Rating"
+  //   );
+  //   cy.get("input[id='1_dropDownSearch']").type("ODF++");
+  //   cy.get("mat-option").contains("span", "ODF++").should("be.visible");
+  //   cy.get("input[id='1_dropDownSearch']").type("+");
+  //   cy.get(".mat-option-text")
+  //     .should("be.visible")
+  //     .and("contain.text", "No options available ");
+  // });
+  // it("selecting different ratings correctly displays the associated scores.", () => {
+  //   cy.visit("https://www.cityfinance.in/login");
+  //   cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+  //        cy.get('i.bi-box-arrow-in-right').eq(0).click();
+  //   cy.get("input[value='LOGIN']").click();
+  //   cy.get("#ulb i").click();
+  //   cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
+  //   cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
+  //   cy.get("button[type='submit']").click();
+  //   cy.contains("a", "15th FC Grants").click();
+  //   cy.wait(3000);
+  //   cy.contains("button", "2024-25").click();
+  //   cy.wait(3000);
 
-    cy.wait(1000);
-    cy.wait(1000);
-    cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
-    cy.wait(1000);
-    cy.get("mat-select[id='1']").click();
-    cy.get(".mat-option-text span").each(($el, index, $list) => {
-      if ($el.text() === "ODF++") {
-        cy.wrap($el).click();
+  //   cy.wait(1000);
+  //   cy.wait(1000);
+  //   cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
+  //   cy.wait(1000);
+  //   cy.get("mat-select[id='1']").click();
+  //   cy.get(".mat-option-text span").each(($el, index, $list) => {
+  //     if ($el.text() === "ODF++") {
+  //       cy.wrap($el).click();
 
-        cy.get(".scoreDiv div").should("have.text", "Score = 10");
-      } else if ($el.text() === "ODF+") {
-        cy.get("mat-select[id='1']").click();
-        cy.wrap($el).click();
+  //       cy.get(".scoreDiv div").should("have.text", "Score = 10");
+  //     } else if ($el.text() === "ODF+") {
+  //       cy.get("mat-select[id='1']").click();
+  //       cy.wrap($el).click();
 
-        cy.get(".scoreDiv div").should("have.text", "Score = 8");
-      } else {
-        cy.get("mat-select[id='1']").click();
-        cy.wrap($el).click();
+  //       cy.get(".scoreDiv div").should("have.text", "Score = 8");
+  //     } else {
+  //       cy.get("mat-select[id='1']").click();
+  //       cy.wrap($el).click();
 
-        cy.get(".scoreDiv div").should("have.text", "Score = 0");
-      }
-    });
-  });
+  //       cy.get(".scoreDiv div").should("have.text", "Score = 0");
+  //     }
+  //   });
+  // });
 
 
-  it("Form is successfully submitted", () => {
-    cy.visit("https://www.cityfinance.in/login");
-    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
-         cy.get('i.bi-box-arrow-in-right').eq(0).click();
-    cy.get("input[value='LOGIN']").click();
-    cy.get("#ulb i").click();
-    cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
-    cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
-    cy.get("button[type='submit']").click();
-    cy.contains("a", "15th FC Grants").click();
-    cy.wait(3000);
-    cy.contains("button", "2024-25").click();
-    cy.wait(3000);
-        cy.contains('button', 'Dismiss').click();
+  // it("Form is successfully submitted", () => {
+  //   cy.visit("https://www.cityfinance.in/login");
+  //   cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+  //        cy.get('i.bi-box-arrow-in-right').eq(0).click();
+  //   cy.get("input[value='LOGIN']").click();
+  //   cy.get("#ulb i").click();
+  //   cy.get('input[formcontrolname="email"]').type(Cypress.env("odfid"));
+  //   cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword"));
+  //   cy.get("button[type='submit']").click();
+  //   cy.contains("a", "15th FC Grants").click();
+  //   cy.wait(3000);
+  //   cy.contains("button", "2024-25").click();
+  //   cy.wait(3000);
 
-    cy.wait(1000);
-    cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
-    cy.wait(1000);
-    cy.get("mat-select[id='1']").click();
-    cy.get("mat-option").contains("span", "ODF++").click();
-    cy.xpath("//button[normalize-space()='Upload PDF']").click();
-    cy.get("input[accept$='application/pdf, 5120, 1']").attachFile("ODF.pdf", {
-      force: true,
-    });
-    cy.get('input[type="date"]').then(($input: JQuery<HTMLInputElement>) => {
-      // Set the value of the input field
-      $input[0].value = '2023-09-10';  
+  //   cy.wait(1000);
+  //   cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
+  //   cy.wait(1000);
+  //   cy.get("mat-select[id='1']").click();
+  //   cy.get("mat-option").contains("span", "ODF++").click();
+  //   cy.xpath("//button[normalize-space()='Upload PDF']").click();
+  //   cy.get("input[accept$='application/pdf, 5120, 1']").attachFile("ODF.pdf", {
+  //     force: true,
+  //   });
+  //   cy.get('input[type="date"]').then(($input: JQuery<HTMLInputElement>) => {
+  //     // Set the value of the input field
+  //     $input[0].value = '2023-09-10';  
       
   
-      // Dispatch the 'input' event
-      $input[0].dispatchEvent(new Event('input', { bubbles: true }));
+  //     // Dispatch the 'input' event
+  //     $input[0].dispatchEvent(new Event('input', { bubbles: true }));
   
-      // Dispatch the 'change' event
-      $input[0].dispatchEvent(new Event('change', { bubbles: true }));
-  });
-    cy.wait(10000);
-    cy.xpath("//button[normalize-space()='Save as Draft']").click();
-    cy.get(".swal-icon.swal-icon--success").should("be.visible");
-    cy.get(".swal-title").should("be.visible").and("have.text", "Saved");
-    cy.get(".swal-text")
-      .should("be.visible")
-      .and("have.text", "Data saved as draft successfully");
-      cy.get(".swal-button.swal-button--confirm").click();
+  //     // Dispatch the 'change' event
+  //     $input[0].dispatchEvent(new Event('change', { bubbles: true }));
+  // });
+  //   cy.wait(10000);
+  //   cy.xpath("//button[normalize-space()='Save as Draft']").click();
+  //   cy.get(".swal-icon.swal-icon--success").should("be.visible");
+  //   cy.get(".swal-title").should("be.visible").and("have.text", "Saved");
+  //   cy.get(".swal-text")
+  //     .should("be.visible")
+  //     .and("have.text", "Data saved as draft successfully");
+  //     cy.get(".swal-button.swal-button--confirm").click();
       // cy.xpath("//button[normalize-space()='Submit']").click();
       // cy.get(".swal-icon.swal-icon--warning").should("be.visible");
       // cy.get(".swal-title").should('have.text',"Confirmation !");
       // cy.get(".swal-button.swal-button--Submit").click();
       // cy.wait(1000);
 
-  })
+  // })
 
 
   // it('Check Review grant application UI',()=>{

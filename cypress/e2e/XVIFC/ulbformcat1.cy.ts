@@ -7,7 +7,7 @@ describe("Home page", () => {
 
     it("validation of Ulb login page", () => {
 
-        cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+        cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').eq(0).click();
          cy.get('i.bi-box-arrow-in-right').eq(0).click();
     cy.get('input[type="submit"]').contains('LOGIN').click();
     cy.get("#ulb i").click();
