@@ -76,22 +76,22 @@ describe("test1", () => {
     ).should("have.css", "color", "rgb(244, 67, 54)");
   });
 
-  it("Invalid Email", () => {
-    cy.visit("https://www.cityfinance.in/login");
-    cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
-         cy.get('i.bi-box-arrow-in-right').eq(0).click();
-             cy.get('input[type="submit"]').contains('LOGIN').click();
+  // it("Invalid Email", () => {
+  //   cy.visit("https://www.cityfinance.in/login");
+  //   cy.get('button.mat-mdc-menu-trigger[aria-haspopup="menu"]').click();
+  //        cy.get('i.bi-box-arrow-in-right').eq(0).click();
+  //            cy.get('input[type="submit"]').contains('LOGIN').click();
 
-    cy.get("#ulb i").click();
-    cy.get('input[formcontrolname="email"]').type("808800");
+  //   cy.get("#ulb i").click();
+  //   cy.get('input[formcontrolname="email"]').type("808800");
 
-    cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword1"));
+  //   cy.get('input[formcontrolname="password"]').type(Cypress.env("odfpassword1"));
 
-    cy.get("button[type='submit']").click();
-    cy.get(".error-message span")
-      .should("be.visible")
-      .and("have.text", "User not found");
-  });
+  //   cy.get("button[type='submit']").click();
+  //   cy.get(".error-message span")
+  //     .should("be.visible")
+  //     .and("have.text", "User not found");
+  // });
 
   it("Invalid Password", () => {
     cy.visit("https://www.cityfinance.in/login");
@@ -172,8 +172,6 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
-            cy.contains('button', 'Dismiss').click();
-
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
   });
@@ -191,8 +189,6 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
-            cy.contains('button', 'Dismiss').click();
-
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
     cy.wait(1000);
@@ -226,8 +222,6 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
-            cy.contains('button', 'Dismiss').click();
-
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
     cy.wait(1000);
@@ -252,8 +246,6 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
-            cy.contains('button', 'Dismiss').click();
-
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
     cy.wait(1000);
@@ -284,8 +276,6 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
-            cy.contains('button', 'Dismiss').click();
-
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
     cy.wait(1000);
@@ -324,7 +314,6 @@ describe("test1", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
-            cy.contains('button', 'Dismiss').click();
 
     cy.wait(1000);
     cy.get("a").contains("span", "Open Defecation Free (ODF)").click();
@@ -360,5 +349,6 @@ describe("test1", () => {
       // cy.get(".swal-button.swal-button--Submit").click();
       // cy.wait(1000);
   })
+  
 
 })

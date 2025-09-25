@@ -28,6 +28,9 @@ export default defineConfig({
         AnnualAccount_id:process.env.AnnualAccount_id,
         Annual_Account_password:process.env.Annual_Account_password,
         dur_password:process.env.dur_password,
+
+        Ptax_id:process.env.Ptax_id,
+        Ptax_password:process.env.Ptax_password,
     
       },
     defaultCommandTimeout: 8000,

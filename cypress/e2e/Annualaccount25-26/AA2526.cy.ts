@@ -139,7 +139,6 @@ describe("Annual Account form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
-                cy.contains('button', 'Dismiss').click();
 
     cy.wait(1000);
     cy.get("a").contains("span", "Annual Accounts").click();
@@ -162,7 +161,6 @@ describe("Annual Account form", () => {
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
     cy.wait(3000);
-                cy.contains('button', 'Dismiss').click();
 
     cy.wait(1000);
     cy.get("a").contains("span", "Annual Accounts").click();
@@ -220,7 +218,6 @@ describe("Annual Account form", () => {
   cy.wait(3000);
   cy.contains("button", "2025-26").click();
   cy.wait(3000);
-              cy.contains('button', 'Dismiss').click();
 
   cy.wait(1000);
   cy.get("a").contains("span", "Annual Accounts").click();

@@ -153,9 +153,7 @@ describe("GFC form", () => {
     cy.get("button[type='submit']").click();
     cy.contains("a", "15th FC Grants").click();
     cy.wait(3000);
-    cy.contains("button", "2025-26").click();
-    cy.wait(3000);
-                cy.contains('button', 'Dismiss').click();
+        cy.contains("button", "2025-26").click();
 
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
@@ -173,8 +171,6 @@ describe("GFC form", () => {
     cy.contains("a", "15th FC Grants").click();
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
-    cy.wait(3000);
-    cy.contains('button', 'Dismiss').click();
 
     cy.wait(1000);
     cy.wait(1000);
@@ -218,9 +214,6 @@ describe("GFC form", () => {
     cy.contains("a", "15th FC Grants").click();
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
-    cy.wait(3000);
-    cy.contains('button', 'Dismiss').click();
-
     cy.wait(1000);
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
@@ -243,9 +236,7 @@ describe("GFC form", () => {
     cy.contains("a", "15th FC Grants").click();
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
-    cy.wait(3000);
-        cy.contains('button', 'Dismiss').click();
-
+    
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
     cy.wait(1000);
@@ -273,10 +264,7 @@ describe("GFC form", () => {
     cy.get("button[type='submit']").click();
     cy.contains("a", "15th FC Grants").click();
     cy.wait(3000);
-    cy.contains("button", "2025-26").click()
-    cy.wait(3000);
-    cy.contains('button', 'Dismiss').click();
-
+    cy.contains("button", "2025-26").click();
     cy.wait(1000);
     cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
@@ -325,8 +313,6 @@ describe("GFC form", () => {
     cy.contains("a", "15th FC Grants").click();
     cy.wait(3000);
     cy.contains("button", "2025-26").click();
-    cy.wait(3000);
-    cy.contains('button', 'Dismiss').click();
 
     cy.wait(1000);
     cy.wait(1000);
