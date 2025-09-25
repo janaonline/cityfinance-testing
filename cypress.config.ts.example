@@ -3,7 +3,7 @@ import { defineConfig } from "cypress";
 export default defineConfig({
     viewportWidth: 1366,
     viewportHeight: 1024,
-    projectId: "xhjbst",
+    projectId: "grpazs",
 
    env: {
    
@@ -21,6 +21,13 @@ export default defineConfig({
      
         odfstate_id:process.env.odfstate_id,
         odfstate_password:process.env.odfstate_password,
+        code1:process.env.code1,
+        password3:process.env.password3,
+        odfid1:process.env.odfid1,
+        odfpassword1:process.env.odfpassword1,
+        AnnualAccount_id:process.env.AnnualAccount_id,
+        Annual_Account_password:process.env.Annual_Account_password,
+        dur_password:process.env.dur_password,
     
       },
     defaultCommandTimeout: 8000,
