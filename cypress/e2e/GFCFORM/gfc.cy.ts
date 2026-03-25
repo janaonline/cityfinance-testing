@@ -210,9 +210,9 @@ describe("GFC form", () => {
     cy.contains("a", "15th FC Grants").click();
     cy.wait(3000);
     cy.contains("button", "2024-25").click();
+
     
 
-    cy.wait(1000);
     cy.get("a").contains("span", "Garbage Free City (GFC)").click();
     cy.wait(1000);
     cy.get("mat-select[id='1']").click();
