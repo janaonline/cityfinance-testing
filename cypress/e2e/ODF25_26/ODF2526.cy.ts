@@ -293,7 +293,7 @@ describe("test1", () => {
       } else {
         cy.get("mat-select[id='1']").click();
         cy.wrap($el).click();
-        cy.wait
+        cy.wait(1000)
 
         cy.get(".scoreDiv div").should("have.text", "Score = 0");
       }
