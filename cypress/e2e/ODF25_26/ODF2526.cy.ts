@@ -1,5 +1,5 @@
 import "cypress-file-upload";
-require('cypress-xpath');
+import "cypress-xpath";
 describe("test1", () => {
 
   const id1 = Cypress.env("odfid1");
@@ -293,6 +293,7 @@ describe("test1", () => {
       } else {
         cy.get("mat-select[id='1']").click();
         cy.wrap($el).click();
+        cy.wait
 
         cy.get(".scoreDiv div").should("have.text", "Score = 0");
       }
@@ -324,17 +325,16 @@ describe("test1", () => {
     cy.get("input[accept$='application/pdf, 5120, 1']").attachFile("ODF.pdf", {
       force: true,
     });
-    cy.get('input[type="date"]').then(($input: JQuery<HTMLInputElement>) => {
-      // Set the value of the input field
-      $input[0].value = '2023-09-10';  
-      
-  
-      // Dispatch the 'input' event
-      $input[0].dispatchEvent(new Event('input', { bubbles: true }));
-  
-      // Dispatch the 'change' event
-      $input[0].dispatchEvent(new Event('change', { bubbles: true }));
-  });
+    cy.get<HTMLInputElement>('input[type="date"]').then(($input) => {
+      const input = $input[0];
+      if (!input) {
+        throw new Error('Date input not found');
+      }
+
+      input.value = '2023-09-10';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
     cy.wait(10000);
     cy.xpath("//button[normalize-space()='Save as Draft']").click();
     cy.get(".swal-icon.swal-icon--success").should("be.visible");
